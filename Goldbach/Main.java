@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  *  Class to test Goldbach's Conjecture.
  *
@@ -26,8 +28,33 @@ public class Main {
      *  @return String describing the prime sum, or null
      */
     public static String getPrimeSum(int n) {
-      // TODO: write this method
-      return null;
+      String answer = "";
+      for(int i = 2; i < Math.sqrt(n); i++){
+        boolean flag = false;
+        for (int j = 2; j < i; j++) {
+          if (i % j == 0) {
+            flag = true;
+            break;
+          }
+        }
+        if (flag == false) {
+          if(testPrime(n - i)){
+            answer = n + " = " + (n - i) + " + " + i;
+          }
+        }
+      }
+      return answer;
+    }
+    public static boolean testPrime(int num){
+      boolean isPrime = false;
+      for(int i = 2; i < (num / 2); i++) {
+        if(num % i == 0){
+          isPrime = true;
+          
+          break;
+        }
+      }
+      return isPrime;
     }
   
     /**
@@ -67,6 +94,10 @@ public class Main {
      * "Goldbach's conjecture has been disproven."
      */
     public static void main(String[] args) {
-      // TODO: write this method
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Please input a maximum integer:");
+      int n = scan.nextInt();
+      System.out.println(getPrimeSum(n));
+
     }
   }
