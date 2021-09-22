@@ -105,8 +105,7 @@
   // Java program to implement Goldbach's conjecture
 import java.util.*;
 
-class GFG
-{
+public class Main{
 	
 static int MAX = 10000;
 
