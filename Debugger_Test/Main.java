@@ -28,7 +28,7 @@ public class Main {
       String tzCity = getTimezoneCity();
       String country = getCountry();
       osd = osName.hashCode();
-      System.out.println(osd);
+      //System.out.println(osd);
     }
     
     public String getOperatingSystemName() {
