@@ -27,10 +27,10 @@ class Main{
         int diff = n - primes.get(i);
         if (primes.contains(diff)){
           answer = n +  " = " + diff + " + " + primes.get(i);
-          //System.out.println(answer);
+          System.out.println(answer);
           return;
         }else if( n % 2 != 0){
-          //System.out.println("this number does not work");
+          System.out.println("this number does not work");
         }
       }
   }
