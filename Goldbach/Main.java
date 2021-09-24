@@ -1,8 +1,8 @@
 import java.util.*;
 class Main{
-  static int MAX = 100000000;
   static ArrayList<Integer> primes = new ArrayList<Integer>();
-  static void createPrimeList(){
+  static void createPrimeList(int n){
+    int MAX = n;
     boolean[] marked = new boolean[(MAX / 2 + 100)];
     for (int i = 1; i <= (Math.sqrt(MAX) - 1) / 2; i++){
       for (int j = (i * (i + 1)) << 1; j <= MAX / 2; j = j + 2 * i + 1){
@@ -17,6 +17,23 @@ class Main{
     }
       
   }
+  static void createListE(int n){
+    boolean prime[] = new boolean[n + 1];
+    for (int i = 0; i <= n; i++){
+      prime[i] = true;
+    }
+    for (int p = 2; p * p <= n; p++){
+      if (prime[p] == true){
+        for (int i = p * p; i <= n; i += p){
+          prime[i] = false;
+        }
+      }
+    }
+    for (int i = 2; i <= n; i++){
+      if (prime[i] == true)
+        primes.add(i);
+      }
+  }
   static void findPrimes(int n){
       String answer;
       if (n <= 2 || n % 2 != 0){
@@ -27,7 +44,7 @@ class Main{
         int diff = n - primes.get(i);
         if (primes.contains(diff)){
           answer = n +  " = " + diff + " + " + primes.get(i);
-          System.out.println(answer);
+          //System.out.println(answer);
           return;
         }else if( n % 2 != 0){
           System.out.println("this number does not work");
@@ -35,15 +52,14 @@ class Main{
       }
   }
   public static void main (String[] args) {
-    createPrimeList();
+    
     Scanner scan = new Scanner(System.in);
     System.out.println("please enter a maximum range:");
     int input = scan.nextInt();
     double start = System.nanoTime();
-    for(int i = 3; i < input+1; i++){
-      if(i % 2 == 0){
+    createPrimeList(input);
+    for(int i = 4; i < input+1; i+=2){
         findPrimes(i);
-      }
     }
     double finish = System.nanoTime();
     double timeElapsed = (finish - start) / 1000000000;
