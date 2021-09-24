@@ -1,8 +1,8 @@
 import java.util.*;
 class Main{
   static ArrayList<Integer> primes = new ArrayList<Integer>();
-  static void createPrimeList(int n){
-    int MAX = n;
+  static void createPrimeList(int MAX){
+
     boolean[] marked = new boolean[(MAX / 2 + 100)];
     for (int i = 1; i <= (Math.sqrt(MAX) - 1) / 2; i++){
       for (int j = (i * (i + 1)) << 1; j <= MAX / 2; j = j + 2 * i + 1){
@@ -44,7 +44,7 @@ class Main{
         int diff = n - primes.get(i);
         if (primes.contains(diff)){
           answer = n +  " = " + diff + " + " + primes.get(i);
-          //System.out.println(answer);
+          System.out.println(answer);
           return;
         }else if( n % 2 != 0){
           System.out.println("this number does not work");
