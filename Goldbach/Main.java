@@ -112,7 +112,7 @@ public class Main{
   // Array to store all prime less
   // than and equal to 10^6
   static ArrayList<Integer> primes = new ArrayList<Integer>();
-
+//m
   // Utility function for Sieve of Sundaram
   static void sieveSundaram()
   {
