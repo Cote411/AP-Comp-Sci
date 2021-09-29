@@ -1,6 +1,8 @@
 import java.util.*;
 class Main{
   static ArrayList<Integer> primes = new ArrayList<Integer>();
+  //commit
+  
   static void createPrimeList(int MAX){
     boolean[] marked = new boolean[(MAX / 2 + 100)];
     for (int i = 1; i <= (Math.sqrt(MAX) - 1) / 2; i++){
@@ -29,7 +31,7 @@ class Main{
           System.out.println(answer);
           return;
         }else if( n % 2 != 0){
-          System.out.println("this number does not work");
+          System.out.println("Goldbach's conjecture was wrong.");
         }
       }
   }
