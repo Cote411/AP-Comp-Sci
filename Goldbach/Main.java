@@ -4,7 +4,7 @@ class Main{
   //commit
   
   static void createPrimeList(int MAX){
-    boolean[] marked = new boolean[(MAX / 2 + 100)];
+    boolean[] marked = new boolean[(MAX / 2 + 1)];
     for (int i = 1; i <= (Math.sqrt(MAX) - 1) / 2; i++){
       for (int j = (i * (i + 1)) << 1; j <= MAX / 2; j = j + 2 * i + 1){
         marked[j] = true;
@@ -19,16 +19,13 @@ class Main{
       
   }
   static void findPrimes(int n){
-      String answer;
       if (n <= 2 || n % 2 != 0){
         System.out.println("Invalid Integer");
         return;
       }
       for (int i = 0 ; primes.get(i) <= n / 2; i++){
-        int diff = n - primes.get(i);
-        if (primes.contains(diff)){
-          answer = n +  " = " + diff + " + " + primes.get(i);
-          System.out.println(answer);
+        if (primes.contains(n - primes.get(i))){
+          System.out.println(n +  " = " + (n - primes.get(i)) + " + " + primes.get(i));
           return;
         }else if( n % 2 != 0){
           System.out.println("Goldbach's conjecture was wrong.");
