@@ -2,7 +2,6 @@ import java.util.*;
 class Main{
   static ArrayList<Integer> primes = new ArrayList<Integer>();
   static void createPrimeList(int MAX){
-
     boolean[] marked = new boolean[(MAX / 2 + 100)];
     for (int i = 1; i <= (Math.sqrt(MAX) - 1) / 2; i++){
       for (int j = (i * (i + 1)) << 1; j <= MAX / 2; j = j + 2 * i + 1){
@@ -16,23 +15,6 @@ class Main{
       }
     }
       
-  }
-  static void createListE(int n){
-    boolean prime[] = new boolean[n + 1];
-    for (int i = 0; i <= n; i++){
-      prime[i] = true;
-    }
-    for (int p = 2; p * p <= n; p++){
-      if (prime[p] == true){
-        for (int i = p * p; i <= n; i += p){
-          prime[i] = false;
-        }
-      }
-    }
-    for (int i = 2; i <= n; i++){
-      if (prime[i] == true)
-        primes.add(i);
-      }
   }
   static void findPrimes(int n){
       String answer;
