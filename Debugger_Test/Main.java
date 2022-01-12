@@ -1,74 +1,38 @@
-/**
- *  This is a class to practice using the debugger.
- *  Answer these questions using the Google form on
- *  Classroom.
- * 
- *  1. Set a breakpoint in the first line of the constructor
- *     Main.Main(). (line 24 of this file)
- *     You may want to use other breakpoints to answer
- *     questions 3 and 4.
- *
- *  2. What values are the strings thisClass, osName, tzCity,
- *     and country being set to in the constructor?
- *
- *  3. What are the values of osData before and after it is
- *      "reversed" in Main.runTests()?
- *
- *  4. Why is the program crashing in Main.runMoreTests()?
- *     Use a breakpoint right before the crash to determine this.
- */
-public class Main {
-    private int tests;
-    private int osd;
-    
-    public Main() {
-      tests = 0;
-      String thisClass = getClass().getName();
-      String osName = getOperatingSystemName();
-      String tzCity = getTimezoneCity();
-      String country = getCountry();
-      osd = osName.hashCode();
-      //System.out.println(osd);
-    }
-    
-    public String getOperatingSystemName() {
-      return System.getProperties().getProperty("os.name");
-    }
-  
-    public String getCountry() {
-      return System.getProperties().getProperty("user.country");
-    }
-  
-    public String getTimezoneCity() {
-      String tzString = System.getProperties().getProperty("user.timezone");
-      if (tzString != null) {
-        String[] tzStrings = tzString.split("/", 2);
-        return tzStrings[tzStrings.length - 1];
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class Main {
+  public static boolean isPrime(int n){
+    for(int i = 2; i < n/2; i++){
+      if(n % i == 0){
+        return false;
       }
-      return null;
     }
-    
-    public int runTests() {
-      for (int i = Integer.parseInt(System.getProperties().getProperty("java.class.version").split("\\.")[0]); i >= 0; i--) {
-        tests++;
+    return true;
+  }
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Please enter two numbers:");
+    int a = 0, b = 0;
+    try{
+      a = scan.nextInt();
+      b = scan.nextInt();
+    }catch(InputMismatchException e){
+      System.out.println();
+      return;
+    }
+    int start = 0, end = 0;
+    if(a > b){
+      start = b;
+      end = a;
+    }else{
+      start = a;
+      end = b;
+    }
+    for(int i = start; i <= end; i++){
+      if(isPrime(i)){
+        System.out.print(i + " ");
       }
-      
-      int osData = osd;
-      osData = Integer.reverse(osData);
-      return osData % 6;
-    }
-    
-    public int runMoreTests() {
-      Integer i = Integer.getInteger("42");
-      return i.intValue();
-    }
-    
-    public static void main(String[] args) {
-      Main test = new Main();
-      int firstTest = test.runTests();
-      System.out.println("First test is " + firstTest);
-      int secondTest = test.runMoreTests();
-      System.out.println("Second test is " + secondTest);
     }
   }
-  
+}
