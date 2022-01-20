@@ -8,7 +8,7 @@ import java.util.Random;
 public class GamePanel extends JPanel implements ActionListener {
     
     static final int SET_SCREEN_WIDTH = 800;
-    static final int SET_SCREEN_HEIGHT = 480;
+    static final int SET_SCREEN_HEIGHT = 600;
     static final int UNIT_SIZE = 25;
     static final int SCREEN_WIDTH = SET_SCREEN_WIDTH - UNIT_SIZE;
     static final int SCREEN_HEIGHT = SET_SCREEN_HEIGHT - UNIT_SIZE;
@@ -54,12 +54,15 @@ public class GamePanel extends JPanel implements ActionListener {
 
     public void draw(Graphics g){
         if(running){
-            /* grid lines for game
-            for(int i=0; i<SCREEN_HEIGHT/UNIT_SIZE; i++){
-                g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
-                g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
+             //grid lines for game
+             
+            for(int i=0; i<SET_SCREEN_HEIGHT/UNIT_SIZE; i++){
+                g.drawLine(0, i*UNIT_SIZE, SET_SCREEN_WIDTH, i*UNIT_SIZE);
             }
-            */
+            for(int i=0; i<SET_SCREEN_WIDTH/UNIT_SIZE; i++){
+                g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SET_SCREEN_HEIGHT);
+            }
+        
             g.setColor(Color.RED);
             g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
             
