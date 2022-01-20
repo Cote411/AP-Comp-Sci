@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
     
-    static final int SET_SCREEN_WIDTH = 1920;
-    static final int SET_SCREEN_HEIGHT = 1080;
+    static final int SET_SCREEN_WIDTH = 800;
+    static final int SET_SCREEN_HEIGHT = 480;
     static final int UNIT_SIZE = 25;
     static final int SCREEN_WIDTH = SET_SCREEN_WIDTH - UNIT_SIZE;
     static final int SCREEN_HEIGHT = SET_SCREEN_HEIGHT - UNIT_SIZE;
