@@ -21,19 +21,23 @@ public class GamePanel extends JPanel implements ActionListener {
     int applesEaten;
     int appleX;
     int appleY;
+    int rValue, gValue, bValue;
     int R_VALUE, G_VALUE, B_VALUE;
     char direction = 'R';
     boolean running = false;
     Timer timer;
     Random random;
 
-    GamePanel(){
+    GamePanel(int red, int green, int blue){
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SET_SCREEN_HEIGHT));
         this.setBackground(Color.black);
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter() {});
         startGame();
+        this.rValue = red;
+        this.gValue = green;
+        this.bValue = blue;
     }
 
     public void startGame(){
@@ -64,7 +68,7 @@ public class GamePanel extends JPanel implements ActionListener {
                     g.setColor(Color.GREEN);
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }else{
-                    g.setColor(new Color(45,180,0));
+                    g.setColor(new Color(rValue,gValue,bValue));
                     /*random color snake
                     g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
 
