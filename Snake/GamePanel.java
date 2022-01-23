@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements ActionListener {
     int R_VALUE, G_VALUE, B_VALUE;
     char direction = 'R';
     boolean running = false;
+    boolean visability = true;
     Timer timer;
     Random random;
 
@@ -166,19 +167,37 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setColor(Color.RED);
         g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
-         g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics2.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
+        g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics2.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
 
+        
+        g.setColor(Color.RED);
+        g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+        FontMetrics metrics3 = getFontMetrics(g.getFont());
+        g.drawString("Press enter to play again", (SCREEN_WIDTH - metrics3.stringWidth("Press enter to play again"))/2, 2*(SCREEN_HEIGHT)/3);
+        
+        g.setColor(Color.RED);
+        g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+        FontMetrics metrics4 = getFontMetrics(g.getFont());
+        g.drawString("Press backspace to quit", (SCREEN_WIDTH - metrics4.stringWidth("Press backspace to quit"))/2, 3*(SCREEN_HEIGHT)/4);
+        
     }
+    public void setVisability(){
+        Window win = SwingUtilities.getWindowAncestor(this);
+        win.dispose();
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(running){
-            move();
-            checkApple();
-            checkCollisions();
-        }
-        repaint();
+            if(running){
+                move();
+                checkApple();
+                checkCollisions();
+            }
+            repaint();
+       
+        
         
     }
 
@@ -206,6 +225,19 @@ public class GamePanel extends JPanel implements ActionListener {
                         direction = 'D';
                     }
                     break;
+            }
+            
+            if(!running){
+                switch(e.getKeyCode()){
+                    case KeyEvent.VK_ENTER:
+                        setVisability();
+                        new GameFrame();
+                        break;
+                    
+                    case KeyEvent.VK_BACK_SPACE:
+                        System.exit(0);
+                        break;
+                }
             }
         }
     }
