@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 
 public class GameFrame extends JFrame{
     
+    
     GameFrame(){
         this.add(new GamePanel(45,180,0));
         this.setTitle("Snake");
